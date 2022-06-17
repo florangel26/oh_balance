@@ -1,0 +1,49 @@
+<template>
+  <span>
+    <!-- inicio del navbar -->
+    <v-overlay :value="drawer" z-index="4"> </v-overlay>
+     <!-- navegacion -->
+    <v-navigation-drawer
+      v-model="drawer"
+      absolute
+      temporary
+      :style="{ top: $vuetify.application.top + 'px', zIndex: 7 }" >
+      <v-list>
+        <v-list-item> Reservar Clase </v-list-item>
+        <v-list-item> Clases Reservadas </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+    <v-app-bar app color="blue darken-4" dark>
+      <v-btn text @click="drawer = !drawer"
+        ><v-app-bar-nav-icon></v-app-bar-nav-icon
+      ></v-btn>
+      <v-toolbar-title class="hidden-sm-and-down"
+        ><v-img src="@/assets/logopeque.png" height="45px" width="320px"></v-img
+      ></v-toolbar-title>
+      <v-spacer></v-spacer>
+       <!-- botones -->
+      <v-btn rounded color="blue darken-1" class="btn btn-primary mr-2">Ingresa</v-btn>
+      <v-btn  rounded color="blue darken-1" class="btn btn-primary mr-3" >Registrate</v-btn>
+      <v-btn rounded color="blue darken-1 " dark>
+        <v-icon>mdi-logout</v-icon>
+      </v-btn>
+    </v-app-bar>
+  </span>
+</template>
+
+<script>
+export default {
+  name: "AppNavigation",
+  data() {
+    return {
+      drawer: false,
+    };
+  },
+};
+</script>
+
+<style>
+*{
+    font-family: 'Courgette', cursive;
+}
+</style>

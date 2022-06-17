@@ -1,19 +1,18 @@
-# oh_balance
+# oh-balance
+ centro de entrenamiento
+Esta destinado para el acceso de los socios de el centro de entrenamiento en donde podran  ver las clases segun su hora y fecha, cantidad de cupos disponibles y poder reservar sus clases.
+ 
+ # Guia de Estilos
+  ***Tipografias***
+  - font-family: 'Courgette', cursive;
 
-## Project setup
-```
-npm install
-```
+  # Guia de instalacion 
+ a traves del CLI crear la carpeta vue create oh-balance designando vue 2, babel, router, vuex, eslint + prettier guardado en archivos dedicados.
+ 
+ como framework decidi ocupar vuetify el cual debe instalarse desde la terminal
+ 
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
 
-### Compiles and minifies for production
-```
-npm run build
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+  # Rutas de acceso
