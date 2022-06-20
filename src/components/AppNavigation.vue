@@ -18,8 +18,7 @@
         ><v-app-bar-nav-icon></v-app-bar-nav-icon
       ></v-btn>
       <v-toolbar-title class="hidden-sm-and-down"
-        ><v-img src="@/assets/logopeque.png" height="45px" width="320px"></v-img
-      ></v-toolbar-title>
+        > <h1>Oh! Balance </h1>  </v-toolbar-title>
       <v-spacer></v-spacer>
        <!-- botones -->
       <v-btn rounded color="blue darken-1" class="btn btn-primary mr-2">Ingresa</v-btn>
@@ -43,7 +42,9 @@ export default {
 </script>
 
 <style>
-*{
+*{  
+    margin: 0;
+    padding: 0;
     font-family: 'Courgette', cursive;
 }
 </style>
