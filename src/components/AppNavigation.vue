@@ -9,8 +9,8 @@
       temporary
       :style="{ top: $vuetify.application.top + 'px', zIndex: 7 }" >
       <v-list>
-        <v-list-item> Reservar Clase </v-list-item>
-        <v-list-item> Clases Reservadas </v-list-item>
+        <v-list-item @click="goToReserve()"> Reservar Clase </v-list-item>
+        <v-list-item @click="goToMyReserve()"> Clases Reservadas </v-list-item>
       </v-list>
     </v-navigation-drawer>
     <v-app-bar app color="blue darken-4" dark>
@@ -37,6 +37,14 @@ export default {
     return {
       drawer: false,
     };
+  },
+  methods: {
+    goToReserve() {
+      this.$router.push("/ListReserve");
+    },
+    goToMyReserve() {
+      this.$router.push("/ClassReserve");
+    },
   },
 };
 </script>
