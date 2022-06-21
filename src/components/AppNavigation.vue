@@ -13,7 +13,7 @@
         <v-list-item @click="goToMyReserve()"> Clases Reservadas </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar app color="blue darken-4" dark>
+    <v-app-bar app color="grey darken-4" dark>
       <v-btn text @click="drawer = !drawer"
         ><v-app-bar-nav-icon></v-app-bar-nav-icon
       ></v-btn>
@@ -21,9 +21,9 @@
         > <h1>Oh! Balance </h1>  </v-toolbar-title>
       <v-spacer></v-spacer>
        <!-- botones -->
-      <v-btn rounded color="blue darken-1" class="btn btn-primary mr-2">Ingresa</v-btn>
-      <v-btn  rounded color="blue darken-1" class="btn btn-primary mr-3" >Registrate</v-btn>
-      <v-btn rounded color="blue darken-1 " dark>
+      <v-btn rounded color="grey darken-1" class="btn btn-primary mr-2">Ingresa</v-btn>
+      <v-btn  rounded color="grey darken-1" class="btn btn-primary mr-3" >Registrate</v-btn>
+      <v-btn rounded color="grey darken-1 " dark>
         <v-icon>mdi-logout</v-icon>
       </v-btn>
     </v-app-bar>
