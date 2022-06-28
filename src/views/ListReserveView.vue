@@ -1,6 +1,6 @@
 <template>
   <div>
-     <add-class></add-class>
+     
     <h3 class="h3">Clases a Reservar</h3>
      <v-container>
         <v-layout>
@@ -13,7 +13,7 @@
                     <h5> REAL RYDER</h5>
                 </v-card-title>
                 <v-card-text>
-                 Profesor: <strong>Juan Perez</strong>
+                 Profesor: <strong>PEDRO PEREZ</strong>
                 </v-card-text>
                 <v-card-text>
                  Cupos: <strong>5/10</strong>
@@ -26,7 +26,7 @@
                 </v-card-text>
                 <v-card-actions>
                  <v-btn
-                color="indigo darken-4"
+                color="grey darken-3"
                 text>
                Reservar
             </v-btn>
@@ -40,12 +40,12 @@
 
 
 <script>
-import AddClass from '@/components/ADMIN/AddClass.vue';
+
 
 export default {
     name: 'ListReserveview',
     components:{
-        AddClass,
+        
     }
 }
 </script>

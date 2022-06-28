@@ -4,7 +4,7 @@ Esta destinado para el acceso de los socios de el centro de entrenamiento en don
  
  # Guia de Estilos
   ***Tipografias***
-  - font-family: 'Courgette', cursive;
+  - font-family: 'Poppins', sans-serif;
                  'Kaushan Script', cursive;
                  
   # Guia de instalacion 

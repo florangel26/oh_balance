@@ -1,41 +1,49 @@
 <template>
-  <span>
+  <span >
     <!-- inicio del navbar -->
-    <v-overlay :value="drawer" z-index="4"> </v-overlay>
+    <v-overlay :value="drawer" z-index="4"  > </v-overlay>
      <!-- navegacion -->
-    <v-navigation-drawer
+    <v-navigation-drawer 
       v-model="drawer"
       absolute
       temporary
       :style="{ top: $vuetify.application.top + 'px', zIndex: 7 }" >
-      <v-list>
-        <v-list-item @click="goToReserve()"> Reservar Clase </v-list-item>
+    <v-list>
+      <v-list-item @click="goToReserve()"> Reservar Clase </v-list-item>
         <v-list-item @click="goToMyReserve()"> Clases Reservadas </v-list-item>
+         <v-btn to="/Admin">Administrador</v-btn>
+    
       </v-list>
     </v-navigation-drawer>
     <v-app-bar app color="grey darken-4" dark>
       <v-btn text @click="drawer = !drawer"
+      v-if="user"
         ><v-app-bar-nav-icon></v-app-bar-nav-icon
       ></v-btn>
       <v-toolbar-title class="hidden-sm-and-down"
-        > <h1>Oh! Balance </h1>  </v-toolbar-title>
+        > <v-btn to="/" rounded color="black"> <h1>Oh! Balance </h1> </v-btn> </v-toolbar-title>
       <v-spacer></v-spacer>
        <!-- botones -->
-      <v-btn rounded color="grey darken-1" class="btn btn-primary mr-2">Ingresa</v-btn>
-      <v-btn  rounded color="grey darken-1" class="btn btn-primary mr-3" >Registrate</v-btn>
-      <v-btn rounded color="grey darken-1 " dark>
-        <v-icon>mdi-logout</v-icon>
+      <v-btn rounded color="grey darken-3" class="btn btn-primary mr-2" to="/login" v-if="!user">Ingresa</v-btn>
+      <v-btn  rounded color="grey darken-3" class="btn btn-primary mr-3"  to="/register" v-if="!user">Registrate</v-btn>
+      
+      <v-btn rounded   @click="offLogout" color="grey darken-3 " dark  v-if="user">
+        <v-icon >mdi-logout</v-icon>
       </v-btn>
     </v-app-bar>
   </span>
 </template>
 
 <script>
+import {onAuthStateChanged, signOut } from "firebase/auth";
+import {auth} from "@/firebase"
+
 export default {
   name: "AppNavigation",
   data() {
     return {
       drawer: false,
+      user : null,
     };
   },
   methods: {
@@ -45,8 +53,23 @@ export default {
     goToMyReserve() {
       this.$router.push("/ClassReserve");
     },
+     async offLogout(){
+        await signOut(auth);
+        this.$router.push("/Login")
+     }
   },
+  created() {
+    onAuthStateChanged(auth, (user) => {
+       this.user = user;
+    })
+  
+
+  }
+
+
 };
+
+
 </script>
 
 <style>

@@ -5,7 +5,8 @@ import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import ListReserveView from '../views/ListReserveView.vue'
 import ClassReserveView from '../views/ClassReserveView.vue'
-import AdminView from '../views/ADMIN/AdminView.vue'
+import AdminView from '../views/AdminView.vue'
+import { currentUserPromise } from '../firebase'
 
 Vue.use(VueRouter)
 
@@ -28,17 +29,26 @@ const routes = [
   {
     path: '/listreserve',
     name: 'listreserve',
-    component: ListReserveView
+    component: ListReserveView,
+    meta:{
+      auth :true,
+    },
   },
   {
     path: '/classreserve',
     name: 'classreserve',
-    component: ClassReserveView
+    component: ClassReserveView,
+    meta:{
+      auth :true,
+    },
   },
   {
     path: '/admin',
     name: 'admin',
-    component: AdminView
+    component: AdminView,
+    meta:{
+      auth :true,
+    },
   }
 ]
 
@@ -46,6 +56,24 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
-})
+});
+//rutas protegidas
+// esta trae la promesa creada en el firabse.js para evitar que el usuario al actualizar con sesion activa se vaya al login
+router.beforeEach (async(to, from, next) => {
+  const requireAuth = to.meta.auth;
+  const user = await currentUserPromise()
+
+  if (requireAuth) {
+    if (user) {
+      next();
+    }
+    else {
+      next ("/login")
+    }
+
+  }else {
+    next();
+  }
+});
 
 export default router

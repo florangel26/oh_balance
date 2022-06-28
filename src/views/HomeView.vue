@@ -8,8 +8,12 @@
     ></v-carousel-item>
   </v-carousel>
   <br>
-  <h1 class="color">Bienvenido a la comunidad de reservas de</h1>
-  <img src="@/assets/logogrande.png" class="fondo">
+  <h1 class="color">Bienvenido al sistema de reservas</h1>
+  <img src="@/assets/logogrande.png" class="fondo imagen">
+  <div class="us">
+     <h2>Mira el clima para que no te tome desprevenido </h2> 
+  </div>
+
 </div>
 </template>
 
@@ -19,13 +23,13 @@
       return {
         items: [
           {
-            src: 'https://lasaludquequieres.cl/wp-content/uploads/2020/02/GettyImages-840886788.jpg',
+            src: 'https://img.freepik.com/foto-gratis/hermosa-joven-pareja-deportiva-trabajando-balon-medicinal-gimnasio_484651-17134.jpg?w=740',
           },
           {
             src: 'https://www.feda.net/wp-content/uploads/2017/09/funcional-training.jpg',
           },
           {
-            src: 'https://www.musculaciontotal.com/wp-content/uploads/2017/10/funcional-vs-pesas.jpg',
+            src: 'https://img.freepik.com/foto-gratis/pareja-muscular-haciendo-tabla-ejercicio-juntos_13339-151107.jpg?w=740',
           },
           {
             src: 'https://as01.epimg.net/deporteyvida/imagenes/2020/08/21/portada/1597993555_784056_1597993862_noticia_normal.jpg',
@@ -36,20 +40,32 @@
   }
 </script>
 <style>
+*{
+    font-family: 'Poppins', sans-serif;
+}
 .home{
     width: 100%;
     text-align: center;
 }
 
-.fondo{
-    margin-top: 40px;
-    border-radius: 90%;
-     max-width: 100%;
-    display: inline-block;
-
-}
 .color{
     color:black;
     font-size: 50px;
 }
+
+.fondo{
+    border-radius: 90%;
+     max-width: 100%;
+    display: inline-block;
+    margin-top: 20px;
+
+}
+.imagen:hover {
+box-shadow: 15px 15px 15px 15px black;
+
+}
+.us{
+    margin-top: 70px;
+}
+
 </style>
