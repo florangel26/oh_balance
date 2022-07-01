@@ -7,47 +7,45 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    addClasss: [],
+    user: null,
+    addClass: [],
   },
-  getters: {},
+  getters: {
+    EsAdministrador: (state) => state.user == "admin@admin.cl",
+  },
   mutations: {
-    CLASS_ADD(state, payload) {
-      state.addClasss.push(payload);
+    SAVE_USER(state, email) {
+      state.user = email;
     },
-    DELETE_ITEM(state, payload) {
-      state.addClasss = state.addClasss.filter((item) => item !== payload);
-    },
-    EDIT_ITEM(state, payload) {
-      state.addClasss = state.addClasss.map((item) =>
-        item === payload ? payload : item
-      );
-    },
+
+    ADD_CLASS(state, payload){
+      state.addClass.push(payload)
+    }
   },
   actions: {
-    async class_add({ commit }, addClasss) {
-      //commit("CLASS_ADD", addClasss);
-      try {
-        await addDoc(collection(db,"addClasss"),{
-          name: addClasss.name,
-          profesor: addClasss.profesor,
-          url: addClasss.url,
-          cupos: addClasss.cupos,
-          inscritos: addClasss.inscritos,
-          fecha:addClasss.fecha,
-          hora: addClasss.hora,
+    saveUser({ commit }, payload) {
+      commit("SAVE_USER", payload);
+    },
+    
+   async add_class( { commit }, editedItem ){
+    try {
+       await addDoc(collection (db, "addClass"),{
+         name: editedItem.name,
+         url: editedItem.url,
+         profesor: editedItem.teacher,
+         inscritos: editedItem.enroll,
+         cupos: editedItem.share,
+         fecha: editedItem.date,
+         hora: editedItem.time,
 
-        }) 
-      } catch (error) { 
-        console.log(error)
-        
-      }
-    },
-    deleteItem({ commit }, item) {
-      commit("DELETE_ITEM", item);
-    },
-    editItem({ commit }, addClasss) {
-      commit("EDIT_ITEM", addClasss);
-    },
+       })
+    } catch (error) {
+      console.log(error)
+    }
+    commit ('ADD_CLASS', editedItem)
+  }
   },
-  modules: {},
-});
+  modules:{
+
+  },
+})

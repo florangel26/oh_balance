@@ -11,7 +11,7 @@
     <v-list>
       <v-list-item @click="goToReserve()"> Reservar Clase </v-list-item>
         <v-list-item @click="goToMyReserve()"> Clases Reservadas </v-list-item>
-         <v-btn to="/Admin">Administrador</v-btn>
+         <v-btn to="/Admin" v-if="esAdmin" >Administrador</v-btn>
     
       </v-list>
     </v-navigation-drawer>
@@ -37,6 +37,7 @@
 <script>
 import {onAuthStateChanged, signOut } from "firebase/auth";
 import {auth} from "@/firebase"
+import {  mapActions } from "vuex";
 
 export default {
   name: "AppNavigation",
@@ -44,9 +45,11 @@ export default {
     return {
       drawer: false,
       user : null,
+       esAdmin: false,
     };
   },
   methods: {
+    ...mapActions(["saveUser"]),
     goToReserve() {
       this.$router.push("/ListReserve");
     },
@@ -61,13 +64,21 @@ export default {
   created() {
     onAuthStateChanged(auth, (user) => {
        this.user = user;
+       if (user != null) {
+        this.saveUser(user.email ?? "");
+        this.esAdmin = this.$store.getters.EsAdministrador;
+      }
     })
   
 
-  }
-
-
+  },
+  mounted() {
+    this.esAdmin = this.$store.getters.EsAdministrador;
+  },
 };
+
+
+
 
 
 </script>

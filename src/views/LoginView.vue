@@ -32,6 +32,7 @@
 <script>
 import { signInWithEmailAndPassword } from "@firebase/auth";
 import { auth } from "@/firebase";
+import { mapActions } from "vuex";
 
 export default {
   data() {
@@ -55,6 +56,7 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["saveUser"]),
     async loginUser() {
       try {
         await signInWithEmailAndPassword(
@@ -62,6 +64,10 @@ export default {
           this.user.email,
           this.user.password
         );
+          this.$store.state.user = this.user.email;
+        localStorage.setItem("user", this.user.email);
+        this.saveUser(this.user.email);
+        
         this.$router.push("/ListReserve");
       } catch (error) {
         alert("Datos Incorrectos"), console.log(error.code);

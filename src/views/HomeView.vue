@@ -12,12 +12,17 @@
   <img src="@/assets/logogrande.png" class="fondo imagen">
   <div class="us">
      <h2>Mira el clima para que no te tome desprevenido </h2> 
+  
+      <div>{{ clima }}</div>
+      <div>{{ icono}}</div>
   </div>
 
 </div>
 </template>
 
+
 <script>
+import axios from "axios";
   export default {
     data () {
       return {
@@ -35,9 +40,34 @@
             src: 'https://as01.epimg.net/deporteyvida/imagenes/2020/08/21/portada/1597993555_784056_1597993862_noticia_normal.jpg',
           },
         ],
+         clima: "",
+         icono: "",
+        prueba: "",
       }
     },
+    methods: {
+    getWeather() {
+      axios
+        .get("https://api.gael.cloud/general/public/clima/SCQN")
+        .then((result) => {
+          
+          this.clima =
+            "Temperatura: " +
+            result.data.Temp +
+            " con una humedad de: " +
+            result.data.Humedad +
+            "º";
+        this.icono = "../assets/" + result.data.Icono;
+        });
+    },
+  },
+  mounted() {
+    this.getWeather();
+    this.prueba = localStorage.getItem("user");
+  },
+
   }
+  
 </script>
 <style>
 *{

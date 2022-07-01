@@ -1,133 +1,131 @@
 <template>
   <div class="container">
-    <!-- AGREGAR CLASES AL LISTADO -->
-    <v-data-table
-      :headers="headers"
-      :items="addClasss"
-      sort-by="class"
-      class="elevation-1">
-      <template v-slot:top>
+    <!-- tabla entera -->
+    <v-data-table :headers="headers" :items="Class" class="elevation-1" >
+      <!-- activador que muestra lo top de la tabla-->
+      <template v-slot:top >
         <v-toolbar flat>
-          <v-toolbar-title>Clases</v-toolbar-title>
+          <v-toolbar-title >Clases Activas</v-toolbar-title>
           <v-divider class="mx-4" inset vertical></v-divider>
           <v-spacer></v-spacer>
-          <v-dialog v-model="dialog" max-width="500px">
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn
-                color="black"
-                normal
-                dark
-                rounded
-                class="mb-2"
-                v-bind="attrs"
-                v-on="on"
-              >
-                Nueva Clase
+          <!-- Modal que activa el nueva clase-->
+          <!-- v-model me hace la conexion para atrapar los datos-->
+          <v-dialog v-model="dialog" max-width="500px" >
+            <!-- v-slot me imprime el boton para agregar nueva clase y se coloca el v-bind y v-on-->
+            <template v-slot:activator="{ on, attrs }" >
+              <v-btn color="black" normal dark rounded v-bind="attrs" v-on="on">
+                Agregar Clase
               </v-btn>
             </template>
-            <v-card>
-              <v-card-title>
-                <v-toolbar-title>Clases</v-toolbar-title>
+            <v-card >
+              <v-card-title >
+                <span class="text-h5">Nueva Clase</span>
               </v-card-title>
-
-              <v-card-text>
-                <v-container>
+              <v-card-text >
+                <v-container >
                   <v-row>
                     <v-col cols="12">
                       <v-text-field
-                        label="Nombre"
-                        required
                         v-model="editedItem.name"
+                        label="Clase"
                       ></v-text-field>
                     </v-col>
-                    <v-col cols="12">
+                     <v-col cols="12">
                       <v-text-field
-                        label="Nombre Profesor"
-                        v-model="editedItem.profesor"
-                        required
-                      ></v-text-field>
-                    </v-col>
-                    <v-col cols="12">
-                      <v-text-field
-                        label="URL de la Imagen de la clase"
-                        required
                         v-model="editedItem.url"
+                        label="Url"
                       ></v-text-field>
                     </v-col>
                     <v-col cols="12">
                       <v-text-field
-                        label="Cupos de la clase"
-                        type="number"
-                        required
-                        :rules="addRules"
-                        min="0"
-                        v-model.number="editedItem.cupos"
+                        v-model="editedItem.teacher"
+                        label="Profesor"
                       ></v-text-field>
                     </v-col>
                     <v-col cols="12">
                       <v-text-field
-                        label="Inscritos en la clase"
-                        type="number"
-                        :rules="textRules"
-                        required
-                        min="0"
-                        v-model.number="editedItem.inscritos"
+                        v-model="editedItem.enroll"
+                        label="Inscritos"
                       ></v-text-field>
                     </v-col>
                     <v-col cols="12">
                       <v-text-field
+                        v-model="editedItem.share"
+                        label="Cupos"
+                      ></v-text-field>
+                    </v-col>
+                    <v-col cols="12">
+                      <v-text-field
+                        v-model="editedItem.date"
                         label="Fecha"
-                        required
-                        v-model="editedItem.fecha"
                       ></v-text-field>
                     </v-col>
                     <v-col cols="12">
                       <v-text-field
+                        v-model="editedItem.time"
                         label="Hora"
-                        v-model="editedItem.hora"
                       ></v-text-field>
                     </v-col>
                   </v-row>
                 </v-container>
               </v-card-text>
-
               <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn color="black" normal dark rounded text @click="close">
-                  Cancelar
+                  Cancel
                 </v-btn>
-                <v-btn color="black" normal dark rounded text @click="save">
-                  Guardar
+                <v-btn color="black" normal dark rounded text @click="addClassForm()">
+                  Save
                 </v-btn>
               </v-card-actions>
             </v-card>
           </v-dialog>
-          <v-dialog v-model="dialogDelete" max-width="650px">
+          <v-dialog v-model="dialogDelete" max-width="600px">
             <v-card>
-              <v-card-title>Esta seguro de que quiere eliminar esta clase?</v-card-title>
+              <v-card-title
+                >Estas seguro que quieres eliminar esta clase?</v-card-title
+              >
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="blue darken-1" text @click="closeDelete">Cancel</v-btn >
-                <v-btn color="blue darken-1" text @click="deleteItemConfirm">OK</v-btn>
+                <v-btn
+                  color="black"
+                  normal
+                  dark
+                  rounded
+                  text
+                  @click="closeDelete"
+                  >Cancelar</v-btn
+                >
+                <v-btn
+                  color="black"
+                  normal
+                  dark
+                  rounded
+                  text
+                  @click="deleteItemConfirm"
+                  >OK</v-btn
+                >
                 <v-spacer></v-spacer>
               </v-card-actions>
             </v-card>
           </v-dialog>
         </v-toolbar>
       </template>
+    <!-- v-slot me imprime los iconos del editar y borrar-->
       <template v-slot:item.actions="{ item }">
         <v-icon small class="mr-2" @click="editItem(item)"> mdi-pencil </v-icon>
         <v-icon small @click="deleteItem(item)"> mdi-delete </v-icon>
       </template>
-      <template v-slot:no-data>
-        <v-btn @click="initialize"> No hay clases activas </v-btn>
-      </template>
     </v-data-table>
+  
+    {{addClass}}
   </div>
+  
+  
 </template>
+
 <script>
-//para activar el index.js se utiliza metodos y computed
-import { mapActions, mapState} from 'vuex';
+import{ mapActions, mapState}  from 'vuex';
 
 export default {
   data: () => ({
@@ -136,40 +134,41 @@ export default {
    
     headers: [
       {
-        text: "Nombre de la clase",
+        text: "Clase",
         align: "start",
-        sortable: false,
         value: "name",
       },
-      { text: "Profesor", value: "profesor" },
-      { text: "Cupos", value: "cupos" },
-      { text: "Inscritos", value: "inscritos" },
-      { text: "Fecha", value: "fecha" },
-      { text: "Hora", value: "hora" },
+      { text: "Profesor", value: "teacher" },
+      { text: "Inscritos", value: "enroll" },
+      { text: "Cupos", value: "share" },
+      { text: "Fecha", value: "date" },
+      { text: "Hora", value: "time" },
       { text: "Actions", value: "actions", sortable: false },
     ],
-    addClasss: [],
+    Class: [],
     editedIndex: -1,
     editedItem: {
-      profesor: "",
-      cupos: 0,
-      inscritos: 0,
-      fecha: "",
-      hora: "",
+      name: "",
+      teacher: "",
+      enroll: 0,
+      share: 0,
+      date: "",
+      time: 0,
       url: "",
     },
-    textRules: [(v) => !!v || 'Field is required'],
-    addRules: [
-                (v) => !!v || 'Field is required', ],
-     
+    defaultItem: {
+      name: "",
+      teacher: "",
+      enroll: 0,
+      share: 0,
+      date: "",
+      time: 0,
+      url: "",
+    },
   }),
 
   computed: {
-      ...mapState(["addClasss"]),
-
-    formTitle() {
-      return this.editedIndex === -1 ? "New Item" : "Edit Item";
-    },
+      ...mapState(['addClass'])
   },
 
   watch: {
@@ -180,34 +179,27 @@ export default {
       val || this.closeDelete();
     },
   },
- 
-  created() {
-    this.initialize();
-  },
- 
+
   methods: {
-     ...mapActions( ["class_add", "deleteItem","editItem"]),
-        classAddForm(){
-        this.class_add({...this.addClass}) 
-        }, 
-        
-       initialize() {
-      this.addClasss = [];
-   },
-       editItem(item) {
-      this.editedIndex = this.addClasss.indexOf(item);
+      ...mapActions (['add_class']),
+      addClassForm(){
+          this.add_class(this.editedItem)
+      },
+     
+    editItem(item) {
+      this.editedIndex = this.Class.indexOf(item);
       this.editedItem = Object.assign({}, item);
       this.dialog = true;
     },
-      deleteItem(item) {
-      this.editedIndex = this.addClasss.indexOf(item);
+
+    deleteItem(item) {
+      this.editedIndex = this.Class.indexOf(item);
       this.editedItem = Object.assign({}, item);
       this.dialogDelete = true;
     },
-   
 
     deleteItemConfirm() {
-      this.addClasss.splice(this.editedIndex, 1);
+      this.Class.splice(this.editedIndex, 1);
       this.closeDelete();
     },
 
@@ -229,12 +221,18 @@ export default {
 
     save() {
       if (this.editedIndex > -1) {
-        Object.assign(this.addClasss[this.editedIndex], this.editedItem);
+        Object.assign(this.Class[this.editedIndex], this.editedItem);
       } else {
-        this.addClasss.push(this.editedItem);
+        this.Class.push(this.editedItem);
       }
       this.close();
     },
   },
 };
 </script>
+
+<style>
+.container {
+  margin-top: 50px;
+}
+</style>
