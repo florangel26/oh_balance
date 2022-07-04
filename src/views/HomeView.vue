@@ -26,7 +26,7 @@
         <v-list-item-subtitle class="text-h6">Humedad: {{this.Humedad}}</v-list-item-subtitle>
           </v-list-item-content>
             <v-list-item-subtitle lass="text-h6"> Hay una temperatura de  <strong> {{this.Temp}} º </strong></v-list-item-subtitle>
-           <v-list-item-subtitle lass="text-h6"> Estado:   <strong> {{this.Estado}}  </strong></v-list-item-subtitle>
+           <v-list-item-subtitle lass="text-h6"> Actualizado a las:   <strong> {{this.HoraUpdate}}  </strong></v-list-item-subtitle>
     
       </v-card>
     
@@ -58,8 +58,8 @@ import axios from "axios";
          clima: "",
          Estacion:"",
         Temp: "",
-        Humendad:"",
-        Estado:"",
+        Humedad:"",
+       HoraUpdate:"",
 
       }
     },
@@ -71,8 +71,8 @@ import axios from "axios";
          this.clima =
           this.Temp  =  result.data.Temp;
           this.Estacion  =  result.data.Estacion;
-           this.Estado  =  result.data.Estado;
            this.Humedad  =  result.data.Humedad;
+           this.HoraUpdate  =  result.data.HoraUpdate;
           }) 
         
     },
