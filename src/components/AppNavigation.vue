@@ -1,17 +1,26 @@
 <template>
   <span >
     <!-- inicio del navbar -->
-    <v-overlay :value="drawer" z-index="4"  > </v-overlay>
+    <v-overlay :value="drawer" z-index="3"  > </v-overlay>
      <!-- navegacion -->
     <v-navigation-drawer 
+    
       v-model="drawer"
       absolute
       temporary
       :style="{ top: $vuetify.application.top + 'px', zIndex: 7 }" >
-    <v-list>
-      <v-list-item @click="goToReserve()"> Reservar Clase </v-list-item>
-        <v-list-item @click="goToMyReserve()"> Clases Reservadas </v-list-item>
-         <v-btn to="/Admin" v-if="esAdmin" >Administrador</v-btn>
+    <v-list
+       >
+       <v-list-item @click="goToReserve()"> 
+       <v-list-item-icon>
+              <v-icon>mdi-calendar</v-icon>
+            </v-list-item-icon>
+      Reservar Clase </v-list-item>
+        <v-list-item @click="goToMyReserve()"> 
+          <v-list-item-icon>
+              <v-icon>mdi-bell</v-icon>
+            </v-list-item-icon>Clases Reservadas </v-list-item>
+         <v-btn to="/Admin" rounded color="cyan" v-if="esAdmin" >Administrador</v-btn>
     
       </v-list>
     </v-navigation-drawer>
@@ -89,4 +98,5 @@ export default {
     padding: 0;
     font-family: 'Courgette', cursive;
 }
+
 </style>

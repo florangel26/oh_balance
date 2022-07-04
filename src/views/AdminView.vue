@@ -4,18 +4,9 @@
   
   <router-view></router-view>
    
-  <template>
-    <div>
         
-
-           
-          
     </div>
 </template>
-
-  </div>
-</template>
-
 <script>
 import AddClass from '@/components/ADMIN/AddClass.vue';
 
@@ -23,6 +14,7 @@ export default {
     name: 'AdminView',
  
     components:{
+
    AddClass
     },
     

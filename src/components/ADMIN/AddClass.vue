@@ -22,7 +22,7 @@
                 <span class="text-h5">Nueva Clase</span>
               </v-card-title>
               <v-card-text >
-                <v-container >
+               <v-container > 
                   <v-row>
                     <v-col cols="12">
                       <v-text-field
@@ -110,6 +110,74 @@
             </v-card>
           </v-dialog>
         </v-toolbar>
+        
+
+
+
+
+
+
+
+
+
+
+
+ <v-simple-table>
+            <template v-slot:default>
+                <thead>
+                    <tr>
+                        <th class="text-left">Clase</th>
+                        <th class="text-left">Profesor</th>
+                        <th class="text-center">Incritos</th>
+                        <th class="text-center">Cupos</th>
+                        <th class="text-center">Fecha</th>
+                        <th class="text-center">Hora</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="editedItem in addClass" :key="editedItem">
+                        <td>{{ editedItem.name }}</td>
+                        <td>{{ editedItem.teacher }}</td>
+                        <td>{{ editedItem.enroll }}</td>
+                        <td>{{ editedItem.share }}</td>
+                        <td>{{ editedItem.date }}</td>
+                        <td>{{ editedItem.time }}</td>
+                       
+                        <td class="text-center">
+                            <v-btn
+                                 color="black"
+                  normal
+                  dark
+                  rounded
+                  text
+                  @click="closeDelete"
+                               
+                                >Delete</v-btn
+                            >
+                            <v-btn color="error" 
+                            rounded
+                         
+                                >Edit</v-btn
+                            >
+                        </td>
+                    </tr>
+                </tbody>
+            </template>
+        </v-simple-table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       </template>
     <!-- v-slot me imprime los iconos del editar y borrar-->
       <template v-slot:item.actions="{ item }">
@@ -126,7 +194,6 @@
 
 <script>
 import{ mapActions, mapState}  from 'vuex';
-
 export default {
   data: () => ({
     dialog: false,
@@ -166,11 +233,9 @@ export default {
       url: "",
     },
   }),
-
   computed: {
       ...mapState(['addClass'])
   },
-
   watch: {
     dialog(val) {
       val || this.close();
@@ -179,10 +244,12 @@ export default {
       val || this.closeDelete();
     },
   },
-
   methods: {
       ...mapActions (['add_class']),
       addClassForm(){
+        
+   
+      this.dialog = true;
           this.add_class(this.editedItem)
       },
      
@@ -191,18 +258,15 @@ export default {
       this.editedItem = Object.assign({}, item);
       this.dialog = true;
     },
-
     deleteItem(item) {
       this.editedIndex = this.Class.indexOf(item);
       this.editedItem = Object.assign({}, item);
       this.dialogDelete = true;
     },
-
     deleteItemConfirm() {
       this.Class.splice(this.editedIndex, 1);
       this.closeDelete();
     },
-
     close() {
       this.dialog = false;
       this.$nextTick(() => {
@@ -210,7 +274,6 @@ export default {
         this.editedIndex = -1;
       });
     },
-
     closeDelete() {
       this.dialogDelete = false;
       this.$nextTick(() => {
@@ -218,7 +281,6 @@ export default {
         this.editedIndex = -1;
       });
     },
-
     save() {
       if (this.editedIndex > -1) {
         Object.assign(this.Class[this.editedIndex], this.editedItem);

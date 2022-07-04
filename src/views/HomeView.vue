@@ -12,9 +12,24 @@
   <img src="@/assets/logogrande.png" class="fondo imagen">
   <div class="us">
      <h2>Mira el clima para que no te tome desprevenido </h2> 
-  
-      <div>{{ clima }}</div>
-      <div>{{ icono}}</div>
+     <v-card 
+      class="mx-auto card"
+     max-width="300"
+     height="450"
+     color="light-blue darken-1"
+     rounded>
+         <v-img  src="@/assets/despejado.png"></v-img>
+       <v-list-item-content>
+        <v-list-item-title class="text-h5">
+          <strong> {{this.Estacion}}</strong>
+        </v-list-item-title>
+        <v-list-item-subtitle class="text-h6">Humedad: {{this.Humedad}}</v-list-item-subtitle>
+          </v-list-item-content>
+            <v-list-item-subtitle lass="text-h6"> Hay una temperatura de  <strong> {{this.Temp}} º </strong></v-list-item-subtitle>
+           <v-list-item-subtitle lass="text-h6"> Estado:   <strong> {{this.Estado}}  </strong></v-list-item-subtitle>
+    
+      </v-card>
+    
   </div>
 
 </div>
@@ -41,31 +56,33 @@ import axios from "axios";
           },
         ],
          clima: "",
-         icono: "",
-        prueba: "",
+         Estacion:"",
+        Temp: "",
+        Humendad:"",
+        Estado:"",
+
       }
     },
     methods: {
     getWeather() {
       axios
-        .get("https://api.gael.cloud/general/public/clima/SCQN")
+        .get("https://api.gael.cloud/general/public/clima/SCTB" )
         .then((result) => {
-          
-          this.clima =
-            "Temperatura: " +
-            result.data.Temp +
-            " con una humedad de: " +
-            result.data.Humedad +
-            "º";
-        this.icono = "../assets/" + result.data.Icono;
-        });
+         this.clima =
+          this.Temp  =  result.data.Temp;
+          this.Estacion  =  result.data.Estacion;
+           this.Estado  =  result.data.Estado;
+           this.Humedad  =  result.data.Humedad;
+          }) 
+        
     },
+    
   },
   mounted() {
     this.getWeather();
-    this.prueba = localStorage.getItem("user");
+  
   },
-
+ 
   }
   
 </script>
@@ -97,5 +114,7 @@ box-shadow: 15px 15px 15px 15px black;
 .us{
     margin-top: 70px;
 }
-
+.card{
+  margin-top: 20px;
+}
 </style>
