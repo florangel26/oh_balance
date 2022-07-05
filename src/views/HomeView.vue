@@ -23,10 +23,10 @@
         <v-list-item-title class="text-h5">
           <strong> {{this.Estacion}}</strong>
         </v-list-item-title>
-        <v-list-item-subtitle class="text-h6">Humedad: {{this.Humedad}}</v-list-item-subtitle>
+        <v-list-item-subtitle class="text-h6">Humedad: {{this.Humedad}} % </v-list-item-subtitle>
           </v-list-item-content>
             <v-list-item-subtitle lass="text-h6"> Hay una temperatura de  <strong> {{this.Temp}} º </strong></v-list-item-subtitle>
-           <v-list-item-subtitle lass="text-h6"> Actualizado a las:   <strong> {{this.HoraUpdate}}  </strong></v-list-item-subtitle>
+           <v-list-item-subtitle lass="text-h6"> Actualizado a las:   <strong> {{this.HoraUpdate}}   </strong></v-list-item-subtitle>
     
       </v-card>
     
@@ -66,7 +66,7 @@ import axios from "axios";
     methods: {
     getWeather() {
       axios
-        .get("https://api.gael.cloud/general/public/clima/SCTB" )
+        .get("https://api.gael.cloud/general/public/clima/SCQN")
         .then((result) => {
          this.clima =
           this.Temp  =  result.data.Temp;
