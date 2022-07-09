@@ -21,12 +21,14 @@ export default new Vuex.Store({
 
     ADD_CLASS(state, payload){
       state.addClass.push(payload)
-    }
+    },
+    
   },
   actions: {
     saveUser({ commit }, payload) {
       commit("SAVE_USER", payload);
     },
+   
     
    async add_class( { commit }, editedItem ){
     try {
