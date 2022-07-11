@@ -6,7 +6,8 @@ import {
   doc,
   where,
   deleteDoc,
-} from "firebase/firestore";
+} 
+from "firebase/firestore";
 import Vue from "vue";
 import Vuex from "vuex";
 import { db } from "../firebase";
@@ -69,8 +70,7 @@ export default new Vuex.Store({
     saveUser({ commit }, payload) {
       commit("SAVE_USER", payload);
     },
-    async reservarCurso(state, payload) {
-      console.log(payload);
+    async reservarCurso({commit}, payload) {
       const docRef = collection(db, "cursosGuardados");
 
       addDoc(docRef, {
@@ -142,7 +142,6 @@ export default new Vuex.Store({
     },
     async delete_reservation(state, id) {
       try {
-        console.log(id);
         const docRef = doc(db, "cursosGuardados", id);
         await deleteDoc(docRef);
       } catch (error) {

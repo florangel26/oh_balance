@@ -43,10 +43,10 @@ import axios from "axios";
       return {
         items: [
           {
-            src: 'https://img.freepik.com/foto-gratis/hermosa-joven-pareja-deportiva-trabajando-balon-medicinal-gimnasio_484651-17134.jpg?w=740',
+            src: 'https://www.runners.mx/wp-content/uploads/2021/12/ejercicios-funcionales-1024x576.jpeg',
           },
           {
-            src: 'https://www.feda.net/wp-content/uploads/2017/09/funcional-training.jpg',
+            src: 'https://media.gq.com.mx/photos/5de1822b5b7e8300097bc3f0/16:9/w_2560%2Cc_limit/GettyImages-1084251084.jpg',
           },
           {
             src: 'https://img.freepik.com/foto-gratis/pareja-muscular-haciendo-tabla-ejercicio-juntos_13339-151107.jpg?w=740',

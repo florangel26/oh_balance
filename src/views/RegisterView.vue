@@ -81,7 +81,7 @@ export default {
           this.user.password
         );
         confirm('Registrado correctamente!');
-        this.$router.push('/ClassReserve');
+        this.$router.push('/ListReserve');
       } catch (error) {
         console.log(error.message);
       }

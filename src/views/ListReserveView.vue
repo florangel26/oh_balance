@@ -4,18 +4,16 @@
     <v-container>
       <v-layout row wrap align-center justify-center>
         <v-flex xs12 sm4 md3 v-for="item in courses" :key="item.id">
-          <v-card height="613px">
+          <v-card max-height="613px">
             <v-img
               max-height="297px"
               v-bind:src="
                 item.url != ''
                   ? item.url
-                  : 'https://media.istockphoto.com/vectors/default-image-icon-vector-missing-picture-page-for-website-design-or-vector-id1357365823?k=20&m=1357365823&s=612x612&w=0&h=ZH0MQpeUoSHM3G2AWzc8KkGYRg4uP_kuu0Za8GFxdFc='
-              "
-            >
+                  : 'https://media.istockphoto.com/vectors/default-image-icon-vector-missing-picture-page-for-website-design-or-vector-id1357365823?k=20&m=1357365823&s=612x612&w=0&h=ZH0MQpeUoSHM3G2AWzc8KkGYRg4uP_kuu0Za8GFxdFc='">
             </v-img>
             <v-card-title class="text-center">
-              <h5>{{ item.name }}</h5>
+              <h4> {{ item.name }}</h4>
             </v-card-title>
             <v-card-text>
               Profesor: <strong>{{ item.profesor }}</strong>
@@ -31,8 +29,7 @@
             </v-card-text>
             <v-card-actions>
               <v-btn
-                color="grey darken-3"
-                text
+                color="black" normal dark rounded 
                 v-if="item.available"
                 @click="ConfirmarReserva(item.id)"
               >
@@ -43,20 +40,20 @@
         </v-flex>
       </v-layout>
     </v-container>
-    <v-dialog v-model="dialog" persistent max-width="290">
+    <v-dialog v-model="dialog" persistent max-width="500">
       <v-card>
-        <v-card-title class="text-h5"> Confirmación </v-card-title>
-        <v-card-text>¿Confirmas tu reserva a la clase indicada?</v-card-text>
+        <v-card-title class="text-h5"> ¿Confirmas tu reserva a la clase indicada? </v-card-title>
+       
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="green darken-1" text @click="dialog = false">
+          <v-btn color="black" normal dark rounded @click="dialog = false">
             No
           </v-btn>
-          <v-btn color="green darken-1" text @click="Reservar()"> Sí </v-btn>
+          <v-btn color="black" normal dark rounded  @click="Reservar()"> Sí </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
-    <v-snackbar v-model="snackbar" :timeout="timeout" color="primary">
+    <v-snackbar v-model="snackbar" :timeout="timeout" color="black">
       {{ text }}
 
       <template v-slot:action="{ attrs }">
@@ -82,7 +79,7 @@ export default {
       currentCurso: 0,
       snackbar: false,
       text: "",
-      timeout: 2000,
+      timeout: 500,
     };
   },
   methods: {
@@ -111,7 +108,7 @@ export default {
 
         // Recorremos los cursos para saber por cada uno cuantas reservas hay
         this.courses.forEach((course, index) => {
-          console.log(course);
+          
           course.cupos = this.getAvailableSpots(course.id, course.cupos);
         });
 
@@ -145,7 +142,7 @@ export default {
         }
       });
 
-      console.log(spots);
+     
       return spots;
     },
   },
