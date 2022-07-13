@@ -6,6 +6,7 @@ import {
   doc,
   where,
   deleteDoc,
+  updateDoc,
 } 
 from "firebase/firestore";
 import Vue from "vue";
@@ -29,7 +30,7 @@ export default new Vuex.Store({
   },
   mutations: {
     CLASS_ADD(state, payload) {
-     state.addClasss.push(payload);
+      state.addClasss.push(payload);
     },
     DELETE_ITEM(state, payload) {
       state.addClasss = state.addClasss.filter((item) => item !== payload);
@@ -52,7 +53,7 @@ export default new Vuex.Store({
       state.all_taken_courses = payload;
     },
     TAKE_COURSE(state, payload) {
-      state.courses = state.courses;
+      state.courses = state.courses = payload;
     },
     DELETE_RESERVATION(state, payload) {
       state.taken_courses = state.taken_courses.filter(
@@ -61,16 +62,51 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    deleteItem({ commit }, item) {
+    async deleteItem({ commit }, item) {
+      console.log(item);
+      const docRef = doc(db, "addClass", item);
+      await deleteDoc(docRef);
+
       commit("DELETE_ITEM", item);
     },
-    editItem({ commit }, addClasss) {
+    async addItem({ commit }, addClasss) {
+      try {
+        await addDoc(collection(db, "addClass"), {
+          cupos: addClasss.cupos,
+          fecha: addClasss.fecha,
+          hora: addClasss.hora,
+          name: addClasss.name,
+          profesor: addClasss.profesor,
+          url: addClasss.url,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+
+      commit("CLASS_ADD", addClasss);
+    },
+    async editItem({ commit }, addClasss) {
+      try {
+        const docRef = doc(db, "addClass", addClasss.id);
+
+        await updateDoc(docRef, {
+          cupos: addClasss.cupos,
+          fecha: addClasss.fecha,
+          hora: addClasss.hora,
+          name: addClasss.name,
+          profesor: addClasss.profesor,
+          url: addClasss.url,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+
       commit("EDIT_ITEM", addClasss);
     },
     saveUser({ commit }, payload) {
       commit("SAVE_USER", payload);
     },
-    async reservarCurso({commit}, payload) {
+    async reservarCurso({ commit }, payload) {
       const docRef = collection(db, "cursosGuardados");
 
       addDoc(docRef, {
@@ -84,6 +120,8 @@ export default new Vuex.Store({
       try {
         const q = query(collection(db, "addClass"));
 
+        console.log("test");
+
         onSnapshot(q, (querySnapshot) => {
           const courses = [];
           querySnapshot.forEach((doc) => {
@@ -92,6 +130,8 @@ export default new Vuex.Store({
               ...doc.data(),
             });
           });
+
+          console.log(courses);
 
           commit("GET_COURSES", courses);
         });

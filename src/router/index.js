@@ -6,6 +6,8 @@ import RegisterView from '../views/RegisterView.vue'
 import ListReserveView from '../views/ListReserveView.vue'
 import ClassReserveView from '../views/ClassReserveView.vue'
 import AdminView from '../views/AdminView.vue'
+import ForHome from '../views/ForHome.vue'
+import PageNotFound from '../views/PageNotFound.vue'
 import { currentUserPromise } from '../firebase'
 
 Vue.use(VueRouter)
@@ -25,6 +27,11 @@ const routes = [
     path: '/login',
     name: 'login',
     component: LoginView
+  },
+  {
+    path: '/forhome',
+    name: 'forhome',
+    component: ForHome,
   },
   {
     path: '/listreserve',
@@ -49,7 +56,11 @@ const routes = [
     meta:{
       auth :true,
     },
-  }
+  },
+
+    { path: "*", 
+    component: PageNotFound, }
+  
 ]
 
 const router = new VueRouter({

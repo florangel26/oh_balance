@@ -88,8 +88,8 @@ export default {
           var courses = this.$store.state.courses;
           var ids = [];
 
-          user_courses.forEach((user_course, index) => {
-            courses.forEach((course, index) => {
+          user_courses.forEach((user_course) => {
+            courses.forEach((course) => {
               if (course.id == user_course.CursosId) {
                 if (!ids.includes(course.id)) {
                   ids.push(course.id);
