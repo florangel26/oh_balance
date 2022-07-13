@@ -34,18 +34,21 @@
                       <v-text-field
                         v-model="editedItem.name"
                         label="Clase"
+                        :rules="textRules"
                       ></v-text-field>
                     </v-col>
                     <v-col cols="12">
                       <v-text-field
                         v-model="editedItem.url"
                         label="Url"
+                        :rules="textRules"
                       ></v-text-field>
                     </v-col>
                     <v-col cols="12">
                       <v-text-field
                         v-model="editedItem.profesor"
                         label="Profesor"
+                        :rules="textRules"
                       ></v-text-field>
                     </v-col>
 
@@ -53,18 +56,21 @@
                       <v-text-field
                         v-model="editedItem.cupos"
                         label="Cupos"
+                        :rules="textRules"
                       ></v-text-field>
                     </v-col>
                     <v-col cols="12">
                       <v-text-field
                         v-model="editedItem.fecha"
                         label="Fecha"
+                        :rules="textRules"
                       ></v-text-field>
                     </v-col>
                     <v-col cols="12">
                       <v-text-field
                         v-model="editedItem.hora"
                         label="Hora"
+                        :rules="textRules"
                       ></v-text-field>
                     </v-col>
                   </v-row>
@@ -87,7 +93,7 @@
             </v-card>
           </v-dialog>
         </v-toolbar>
-        <v-simple-table  >
+        <v-simple-table >
           <template  v-slot:default>
             <thead>
               <tr>
@@ -182,6 +188,7 @@ export default {
       profesor: "",
       url: "",
       id: 0,
+       textRules:"",
     },
     defaultItem: {
       name: "",
@@ -191,8 +198,14 @@ export default {
       date: "",
       time: 0,
       url: "",
+     
     },
+    textRules: [
+        (v) => (v && !!v.trim()) || "Datos Necesarios",
+    
+      ],
   }),
+  
   computed: {
     ...mapState(["addClass"]),
   },

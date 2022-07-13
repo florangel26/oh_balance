@@ -14,11 +14,13 @@
           <v-text-field
             v-model="user.password"
             label="Password"
+            type="password"
             :rules="passwordRules"
           />
           <v-text-field
             v-model="user.repassword"
             label="Confirmpassword"
+             type="password"
             :rules="repasswordRules"
           />
           <v-btn

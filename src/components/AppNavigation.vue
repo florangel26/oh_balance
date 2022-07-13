@@ -101,9 +101,8 @@ export default {
     onAuthStateChanged(auth, (user) => {
       this.user = user;
 
-      this.$store.state.userId = user.uid;
-
       if (user != null) {
+        this.$store.state.userId = user.uid;
         this.saveUser(user.email ?? "");
         this.esAdmin = this.$store.getters.EsAdministrador;
       }

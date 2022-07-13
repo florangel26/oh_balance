@@ -98,6 +98,7 @@ export default {
         this.dialog = false;
         this.text = "Clase Reservada!";
         this.snackbar = true;
+  
       });
     },
     async loadCourses() {
