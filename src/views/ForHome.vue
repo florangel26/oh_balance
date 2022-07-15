@@ -1,18 +1,19 @@
 <template>
-   <div class="container">
-       <h1 >  ¿No pudiste venir a nuestras intalaciones?</h1>
-       <h6>No importa te dejamos algunas cases para que puedas hacerlo desde casa</h6>
-       
-      <v-card class="mx-auto" color="#26c6da" dark max-width="500">
+  <div class="container">
+    <h1>¿No pudiste venir a nuestras instalaciones?</h1>
+    <h2>
+      No importa, te dejamos algunas cases para que puedas hacerlo desde casa
+    </h2>
+    <div class="container">
+      <v-card class="mx-auto" color="#26c6da" dark max-width="620"  height="315">
         <v-card-title>
           <v-icon large left> mdi-twitter </v-icon>
           <span class="text-h6 font-weight-light">Twitter</span>
         </v-card-title>
 
-        <v-card-text class="text-h5 font-weight-bold">
-          Practicar #ejercicio físico es fundamental para nuestra salud a
-          cualquier edad, pero a medida que nos hacemos #mayores, es muy
-          importante mantener nuestro cuerpo activo.
+        <v-card-text class="text-h4 font-weight-bold">
+          El ejercicio ayuda a reducir la depresión y la ansiedad.
+          <h3>!! CON TODO SI NO PA' QUE ¡¡</h3>
         </v-card-text>
 
         <v-card-actions mt-40px>
@@ -26,30 +27,50 @@
             </v-list-item-avatar>
 
             <v-list-item-content>
-              <v-list-item-title>Sabias que?</v-list-item-title>
+              <v-list-item-title><h2>Sabias que?</h2> </v-list-item-title>
             </v-list-item-content>
 
             <v-row align="center" justify="end">
               <v-icon class="mr-1"> mdi-heart </v-icon>
-              <span class="subheading mr-2">256</span>
-              <span class="mr-1">·</span>
+              <span class="subheading mr-2"> <h2>256</h2> </span>
+              <span class="mr-3"></span>
               <v-icon class="mr-1"> mdi-share-variant </v-icon>
-              <span class="subheading">45</span>
+              <span class="subheading"><h2>36</h2> </span>
             </v-row>
           </v-list-item>
         </v-card-actions>
       </v-card>
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/GSVxtHBA-RQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
+    <br />
+    <iframe
+      width="90%"
+      height="815"
+      src="https://www.youtube.com/embed/GSVxtHBA-RQ"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+    <br />
+    <br />
+    <iframe
+      width="90%"
+      height="815"
+      src="https://www.youtube.com/embed/-5ztdzyQkSQ"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+  </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
-<style>
-
+<style scoped>
+.container {
+  text-align: center;
+}
 </style>

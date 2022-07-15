@@ -231,7 +231,6 @@ export default {
       this.loadCourses();
     },
     delete_Item(item) {
-      console.log(item);
       this.editedItem = item;
       this.dialogDelete = true;
     },

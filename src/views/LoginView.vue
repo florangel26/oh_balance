@@ -69,9 +69,9 @@ export default {
         localStorage.setItem("user", this.user.email);
         this.saveUser(this.user.email);
         
-        this.$router.push("/ListReserve");
+        this.$router.push("/");
       } catch (error) {
-        alert("Datos Incorrectos"), console.log(error.code);
+        alert("Datos Incorrectos");
       }
     },
 

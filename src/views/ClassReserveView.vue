@@ -3,16 +3,14 @@
     <h1 class="h3">Clases Reservadas</h1>
     <v-container>
       <v-layout row wrap align-center justify-center>
-        <v-flex xs12 sm4 md3 v-for="item in main_courses" :key="item.id">
+        <v-flex sm4 xs6  v-for="item in main_courses" :key="item.id">
           <v-card>
             <v-img
-              max-height="297px"
+              max-height="300px"
               v-bind:src="
                 item.url != ''
                   ? item.url
-                  : 'https://media.istockphoto.com/vectors/default-image-icon-vector-missing-picture-page-for-website-design-or-vector-id1357365823?k=20&m=1357365823&s=612x612&w=0&h=ZH0MQpeUoSHM3G2AWzc8KkGYRg4uP_kuu0Za8GFxdFc='
-              "
-            >
+                  : 'https://media.istockphoto.com/vectors/default-image-icon-vector-missing-picture-page-for-website-design-or-vector-id1357365823?k=20&m=1357365823&s=612x612&w=0&h=ZH0MQpeUoSHM3G2AWzc8KkGYRg4uP_kuu0Za8GFxdFc='">
             </v-img>
             <v-card-title class="text-center">
               <h5>{{ item.name }}</h5>

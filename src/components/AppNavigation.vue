@@ -1,19 +1,20 @@
 <template>
   <div>
-    <v-overlay :value="drawer" z-index="4"> </v-overlay>
+    <v-overlay :value="drawer" z-index="4" > </v-overlay>
     <!-- navegacion -->
     <v-navigation-drawer
       v-model="drawer"
       absolute
       temporary
       dark
-      :style="{ center: $vuetify.application.top + 'px', zIndex: 7 }"
-    >
-      <v-list nav dense max-height="100%">
+     >
+      <!-- :style="{ center: $vuetify.application.top + 'px', zIndex: 7 }" -->
+     
+      <v-list  max-height="100%">
         <v-list-item @click="goToReserve()">
           <v-list-item-icon>
             <v-icon>mdi-calendar</v-icon>
-          </v-list-item-icon>
+          </v-list-item-icon> 
           Reservar Clase
         </v-list-item>
         <v-list-item @click="goToMyReserve()">
@@ -62,7 +63,11 @@
         <v-icon>mdi-logout</v-icon>
       </v-btn>
     </v-app-bar>
+    
+
   </div>
+  
+    
 </template>
 
 <script>
@@ -119,5 +124,6 @@ export default {
   margin: 0;
   padding: 0;
   font-family: "Courgette", cursive;
+  
 }
 </style>

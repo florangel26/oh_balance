@@ -63,7 +63,6 @@ export default new Vuex.Store({
   },
   actions: {
     async deleteItem({ commit }, item) {
-      console.log(item);
       const docRef = doc(db, "addClass", item);
       await deleteDoc(docRef);
 
@@ -120,7 +119,7 @@ export default new Vuex.Store({
       try {
         const q = query(collection(db, "addClass"));
 
-        console.log("test");
+       
 
         onSnapshot(q, (querySnapshot) => {
           const courses = [];
@@ -131,7 +130,7 @@ export default new Vuex.Store({
             });
           });
 
-          console.log(courses);
+          
 
           commit("GET_COURSES", courses);
         });

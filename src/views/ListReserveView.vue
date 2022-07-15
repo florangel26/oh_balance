@@ -3,10 +3,10 @@
     <h3 class="h3">Clases a Reservar</h3>
     <v-container>
       <v-layout row wrap align-center justify-center>
-        <v-flex xs12 sm4 md3 v-for="item in courses" :key="item.id">
-          <v-card max-height="613px">
+        <v-flex   sm4 xs6  v-for="item in courses" :key="item.id">
+          <v-card max-height="800">
             <v-img
-              max-height="297px"
+              max-height="300px"
               v-bind:src="
                 item.url != ''
                   ? item.url
