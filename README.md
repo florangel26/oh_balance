@@ -18,3 +18,6 @@ Esta destinado para el acceso de los socios de el centro de entrenamiento en don
 
   # Rutas de acceso
   Usuario administrador: admin@admin.cl  contraseña:123456
+ # Hosting
+ Firebase
+  https://oh-balance.web.app

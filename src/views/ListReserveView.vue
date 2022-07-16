@@ -3,7 +3,7 @@
     <h3 class="h3">Clases a Reservar</h3>
     <v-container>
       <v-layout row wrap align-center justify-center>
-        <v-flex   sm4 xs6  v-for="item in courses" :key="item.id">
+        <v-flex   sm4 xs8 v-for="item in courses" :key="item.id">
           <v-card max-height="800">
             <v-img
               max-height="300px"

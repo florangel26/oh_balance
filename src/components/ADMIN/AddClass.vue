@@ -8,7 +8,7 @@
           <!-- Modal que activa el nueva clase-->
           <!-- v-model me hace la conexion para atrapar los datos-->
           <v-dialog v-model="dialog" max-width="500px">
-            <!-- v-slot me imprime el boton para agregar nueva clase y se coloca el v-bind y v-on-->
+            <!-- v-slot me imprime el boton para agregar nueva clase -->
             <template v-slot:activator="{ on, attrs }">
               <v-btn
                 block
@@ -93,13 +93,13 @@
             </v-card>
           </v-dialog>
         </v-toolbar>
-        <v-simple-table >
+        <v-simple-table width="100%" >
           <template  v-slot:default>
             <thead>
               <tr>
                 <th class="text-left">Clase</th>
                 <th class="text-left">Profesor</th>
-                <th class="text-left">Cupos</th>
+                 <th class="text-left">Cupos</th>
                 <th class="text-left">Fecha</th>
                 <th class="text-left">Hora</th>
               </tr>
@@ -290,5 +290,36 @@ export default {
 <style>
 .container {
   margin-top: 50px;
+}
+@media screen and (max-width: 600px) {
+       table {
+           width:100%;
+       }
+       thead {
+           display: none;
+       }
+       tr:nth-of-type(2n) {
+           background-color: inherit;
+       }
+       tr td:first-child {
+           background: #f0f0f0;
+           font-weight:bold;
+           font-size:1.3em;
+       }
+       tbody td {
+           display: block;
+           text-align:center;
+       }
+       tbody td:before {
+           content: attr(data-th);
+           display: block;
+           text-align:center;
+       }
+}
+@media screen and (max-width: 320px) {
+     table {
+       display: block;
+       overflow-x: auto;
+     }
 }
 </style>
