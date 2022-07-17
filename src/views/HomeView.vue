@@ -39,10 +39,10 @@
         >
       </v-card>
     </div>
-    <v-footer dark >
+    <v-footer dark>
       <v-card class="flex" flat tile>
-        <v-card-title  class="justify-center" >
-          <v-btn  v-for="icon in icons" :key="icon" class="mx-6" dark icon>
+        <v-card-title class="justify-center">
+          <v-btn v-for="icon in icons" :key="icon" class="mx-6" dark icon>
             <v-icon size="34px">
               {{ icon }}
             </v-icon>
@@ -107,7 +107,6 @@ export default {
   font-family: "Poppins", sans-serif;
 }
 .home {
-
   width: 100%;
   text-align: center;
 }

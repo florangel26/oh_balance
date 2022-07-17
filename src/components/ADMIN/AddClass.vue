@@ -316,7 +316,7 @@ export default {
            text-align:center;
        }
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 450px) {
      table {
        display: block;
        overflow-x: auto;

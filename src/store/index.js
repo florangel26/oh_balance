@@ -7,8 +7,7 @@ import {
   where,
   deleteDoc,
   updateDoc,
-} 
-from "firebase/firestore";
+} from "firebase/firestore";
 import Vue from "vue";
 import Vuex from "vuex";
 import { db } from "../firebase";
@@ -37,7 +36,7 @@ export default new Vuex.Store({
     },
     EDIT_ITEM(state, payload) {
       state.addClasss = state.addClasss.map((item) =>
-       item === payload ? payload : item
+        item === payload ? payload : item
       );
     },
     SAVE_USER(state, email) {
@@ -119,8 +118,6 @@ export default new Vuex.Store({
       try {
         const q = query(collection(db, "addClass"));
 
-       
-
         onSnapshot(q, (querySnapshot) => {
           const courses = [];
           querySnapshot.forEach((doc) => {
@@ -129,8 +126,6 @@ export default new Vuex.Store({
               ...doc.data(),
             });
           });
-
-          
 
           commit("GET_COURSES", courses);
         });
