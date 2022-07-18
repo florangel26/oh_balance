@@ -114,6 +114,7 @@ export default new Vuex.Store({
 
       commit("TAKE_COURSE", payload);
     },
+    // listado de los cursos disponibles para reservar
     async get_courses({ commit }) {
       try {
         const q = query(collection(db, "addClass"));
@@ -133,12 +134,13 @@ export default new Vuex.Store({
         console.log(error);
       }
     },
+    // devuelve todas las reservas hechas, calculo de los cupos 
     async get_all_taken_courses({ commit }) {
       try {
         const q = query(collection(db, "cursosGuardados"));
 
         onSnapshot(q, (querySnapshot) => {
-          const courses = [];
+          const courses = [0];
           querySnapshot.forEach((doc) => {
             courses.push({
               id: doc.id,

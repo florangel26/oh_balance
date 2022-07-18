@@ -96,7 +96,7 @@ export default {
       this.$router.push("/Login");
     },
   },
-
+// usuario admin
   created() {
     onAuthStateChanged(auth, (user) => {
       this.user = user;

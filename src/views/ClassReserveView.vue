@@ -91,9 +91,10 @@ export default {
   },
   methods: {
     ...mapActions(["get_taken_courses", "get_courses", "delete_reservation"]),
+    //obtiene las reservas del usuario y el listado de cursos y se recorren para hacer match con las reservas del usuario
     async loadCourses() {
       var usuarioId = this.$store.state.userId;
-
+      //atrapa los datos de cursosGuardado de firebase
       this.get_taken_courses(usuarioId).then((res) => {
         this.get_courses();
       });
@@ -131,6 +132,7 @@ export default {
       });
     },
   },
+  //actualiza el estado de la reserva
   mounted() {
     this.loadCourses();
   },

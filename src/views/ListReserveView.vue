@@ -100,7 +100,8 @@ export default {
         this.snackbar = true;
   
       });
-    },
+    }, 
+    //invoca método del store para obtener los cursos que se deben mostrar en el listado
     async loadCourses() {
       var usuarioId = this.$store.state.userId;
 
@@ -121,6 +122,7 @@ export default {
           this.taken_courses.forEach((taken_course, index) => {
             // Aqui validamos si la reserva corresponde al mismo curso
             if (
+              //se guardan en la variable course para mostrar en los cards
               course.id == taken_course.CursosId &&
               taken_course.UserId == usuarioId
             ) {
@@ -130,6 +132,7 @@ export default {
         });
       });
     },
+    //al cargar la pagina llama al metodo del store para obtner las reservas hechas
     async loadTakenCourses() {
       this.get_all_taken_courses().then((res) => {
         this.taken_courses = this.$store.state.all_taken_courses;
