@@ -108,6 +108,7 @@ export default {
       }
     });
   },
+  // acceso al DOM
   mounted() {
     this.esAdmin = this.$store.getters.EsAdministrador;
   },
