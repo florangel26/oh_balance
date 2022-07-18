@@ -20,7 +20,7 @@
           <v-text-field
             v-model="user.repassword"
             label="Confirmpassword"
-             type="password"
+            type="password"
             :rules="repasswordRules"
           />
           <v-btn
@@ -30,8 +30,8 @@
             :disabled="!valid"
             @click="registerUser"
             >Registrar</v-btn
-          > 
-    
+          >
+
           <v-btn color="black" normal dark rounded @click="reset">Borrar</v-btn>
         </v-col>
       </v-row>
@@ -77,13 +77,13 @@ export default {
   methods: {
     async registerUser() {
       try {
-      await createUserWithEmailAndPassword(
+        await createUserWithEmailAndPassword(
           auth,
           this.user.email,
           this.user.password
         );
-        confirm('Registrado correctamente!');
-        this.$router.push('/ListReserve');
+        confirm("Registrado correctamente!");
+        this.$router.push("/ListReserve");
       } catch (error) {
         console.log(error.message);
       }

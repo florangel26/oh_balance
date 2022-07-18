@@ -1,8 +1,6 @@
 <template>
   <div class="container">
-      <div class="text-h2">
-        Pagina no encontrada
-      </div>
+    <div class="text-h2">Pagina no encontrada</div>
   </div>
 </template>
 
@@ -13,7 +11,7 @@ export default {
 </script>
 
 <style scoped>
-.container{
-   text-align: center;
+.container {
+  text-align: center;
 }
 </style>

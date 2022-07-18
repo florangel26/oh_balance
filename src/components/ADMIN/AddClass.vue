@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <!-- tabla entera -->
-    <v-simple-table >
+    <v-simple-table>
       <!-- activador que muestra lo top de la tabla-->
       <template v-slot:top>
         <v-toolbar>
@@ -93,18 +93,18 @@
             </v-card>
           </v-dialog>
         </v-toolbar>
-        <v-simple-table width="100%" >
-          <template  v-slot:default>
+        <v-simple-table width="100%">
+          <template v-slot:default>
             <thead>
               <tr>
                 <th class="text-left">Clase</th>
                 <th class="text-left">Profesor</th>
-                 <th class="text-left">Cupos</th>
+                <th class="text-left">Cupos</th>
                 <th class="text-left">Fecha</th>
                 <th class="text-left">Hora</th>
               </tr>
             </thead>
-            
+
             <tbody>
               <tr v-for="editedItem in Class" :key="editedItem.item">
                 <td>{{ editedItem.name }}</td>
@@ -188,7 +188,7 @@ export default {
       profesor: "",
       url: "",
       id: 0,
-       textRules:"",
+      textRules: "",
     },
     defaultItem: {
       name: "",
@@ -198,14 +198,10 @@ export default {
       date: "",
       time: 0,
       url: "",
-     
     },
-    textRules: [
-        (v) => (v && !!v.trim()) || "Datos Necesarios",
-    
-      ],
+    textRules: [(v) => (v && !!v.trim()) || "Datos Necesarios"],
   }),
-  
+
   computed: {
     ...mapState(["addClass"]),
   },
@@ -292,34 +288,34 @@ export default {
   margin-top: 50px;
 }
 @media screen and (max-width: 600px) {
-       table {
-           width:100%;
-       }
-       thead {
-           display: none;
-       }
-       tr:nth-of-type(2n) {
-           background-color: inherit;
-       }
-       tr td:first-child {
-           background: #f0f0f0;
-           font-weight:bold;
-           font-size:1.3em;
-       }
-       tbody td {
-           display: block;
-           text-align:center;
-       }
-       tbody td:before {
-           content: attr(data-th);
-           display: block;
-           text-align:center;
-       }
+  table {
+    width: 100%;
+  }
+  thead {
+    display: none;
+  }
+  tr:nth-of-type(2n) {
+    background-color: inherit;
+  }
+  tr td:first-child {
+    background: #f0f0f0;
+    font-weight: bold;
+    font-size: 1.3em;
+  }
+  tbody td {
+    display: block;
+    text-align: center;
+  }
+  tbody td:before {
+    content: attr(data-th);
+    display: block;
+    text-align: center;
+  }
 }
 @media screen and (max-width: 450px) {
-     table {
-       display: block;
-       overflow-x: auto;
-     }
+  table {
+    display: block;
+    overflow-x: auto;
+  }
 }
 </style>

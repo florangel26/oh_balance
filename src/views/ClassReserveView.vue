@@ -2,8 +2,8 @@
   <div>
     <h1 class="h3">Clases Reservadas</h1>
     <v-container>
-      <v-layout  wrap align-center justify-center row>
-        <v-flex sm4 xs6  v-for="item in main_courses" :key="item.id">
+      <v-layout wrap align-center justify-center row>
+        <v-flex sm4 xs6 v-for="item in main_courses" :key="item.id">
           <v-card>
             <v-img
               max-height="300px"

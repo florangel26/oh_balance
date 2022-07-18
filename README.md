@@ -16,6 +16,7 @@ Esta destinado para el acceso de los socios de el centro de entrenamiento en don
 
 
 
+
   # Rutas de acceso
   Usuario administrador: admin@admin.cl  contraseña:123456
  # Hosting
@@ -30,4 +31,13 @@ Esta destinado para el acceso de los socios de el centro de entrenamiento en don
 
 Para subir cambios al hosting 
 -Usar comando de npm run build 
--Firestore deploy
+-Firebase deploy
+
+ # Testing
+ cypress
+ npm install cypress 
+ npx cypress run
+ npm install --save-dev start-server-and-test
+ en el archivo ttest/specs/ pruebas
+ resultados
+ paso la que refiere encontrar h1, se debio colocar nombre en el componente para que funcionara

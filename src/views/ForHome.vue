@@ -5,7 +5,13 @@
       No importa, te dejamos algunas cases para que puedas hacerlo desde casa
     </h2>
     <div class="container">
-      <v-card class="mx-auto" color="#26c6da" dark max-width="620"  max-height="315">
+      <v-card
+        class="mx-auto"
+        color="#26c6da"
+        dark
+        max-width="620"
+        max-height="315"
+      >
         <v-card-title>
           <v-icon large left> mdi-twitter </v-icon>
           <span class="text-h6 font-weight-light">Twitter</span>

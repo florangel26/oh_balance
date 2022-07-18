@@ -12,10 +12,10 @@
           <v-text-field
             v-model="user.password"
             label="Password"
-             type="password"
+            type="password"
             :rules="passwordRules"
           />
-          
+
           <v-btn
             color="blue darken-1"
             rounded
@@ -23,7 +23,8 @@
             :disabled="!valid"
             @click="loginUser"
             name="login"
-            >Acceder</v-btn >
+            >Acceder</v-btn
+          >
           <v-btn color="black" normal dark rounded @click="reset">Borrar</v-btn>
         </v-col>
       </v-row>
@@ -66,10 +67,10 @@ export default {
           this.user.email,
           this.user.password
         );
-          this.$store.state.user = this.user.email;
+        this.$store.state.user = this.user.email;
         localStorage.setItem("user", this.user.email);
         this.saveUser(this.user.email);
-        
+
         this.$router.push("/");
       } catch (error) {
         alert("Datos Incorrectos");
