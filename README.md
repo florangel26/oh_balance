@@ -19,5 +19,15 @@ Esta destinado para el acceso de los socios de el centro de entrenamiento en don
   # Rutas de acceso
   Usuario administrador: admin@admin.cl  contraseña:123456
  # Hosting
- Firebase
+ 
   https://oh-balance.web.app
+
+-Instalación en la terminal del comando de firebase
+ 
+-Vinculación con el proyecto si ya fue creado en firebase y con el github si lo desea
+
+-Proyecto desplegado en hosting de firebase
+
+Para subir cambios al hosting 
+-Usar comando de npm run build 
+-Firestore deploy

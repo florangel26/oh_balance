@@ -22,6 +22,7 @@
             class="mr-2"
             :disabled="!valid"
             @click="loginUser"
+            name="login"
             >Acceder</v-btn >
           <v-btn color="black" normal dark rounded @click="reset">Borrar</v-btn>
         </v-col>
